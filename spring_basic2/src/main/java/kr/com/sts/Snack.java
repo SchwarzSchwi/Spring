@@ -26,6 +26,8 @@ public class Snack {
 			viewPage = "/snackMvc/snack_list";
 		//저장 폼	
 		}else if(gubun.equals("writeForm")) {
+			CommonExecute snack = new SnackList();
+			snack.execute(req);
 			viewPage ="/snackMvc/snack_write";
 		//저장	
 		}else if(gubun.equals("snackSave")) {
