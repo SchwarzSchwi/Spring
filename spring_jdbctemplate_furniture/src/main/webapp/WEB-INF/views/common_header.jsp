@@ -21,7 +21,7 @@
     //]]>
 </script> 
 <script type="text/javascript">
-	function goPage(gubun){
+	function goPageMove(gubun){
 		loc.t_gubun.value = gubun;
 		loc.method="post";
 		loc.action="Member";
@@ -38,13 +38,13 @@
 
 		<div id="b_top_menu">
 			<ul class="top_menu">
-				<li><a href="javascript:goPage('join')">Contack</a></li>
+				<li><a href="javascript:goPageMove('join')">Contack</a></li>
 				<c:if test="${empty sessionId}">
-					<li><a href="javascript:goPage('login')">Login</a></li>
+					<li><a href="javascript:goPageMove('login')">Login</a></li>
 				</c:if>
 				<c:if test="${not empty sessionId}">
-					<li><a href="javascript:goPage('myinfo')">Myinfo</a></li>
-					<li><a href="javascript:goPage('logout')">Logout</a></li>
+					<li><a href="javascript:goPageMove('myinfo')">Myinfo</a></li>
+					<li><a href="javascript:goPageMove('logout')">Logout</a></li>
 				</c:if>
 				<li><a href="/furni/"><i class="fa fa-home"></i>Home</a></li>
 			</ul>
@@ -117,10 +117,10 @@
 						</ul>
 					</div>					
 				</li>
-				<li><a href="">Notice & News</a>
+				<li><a href="Notice">Notice & News</a>
 					<div class="div7">
 						<ul>
-							<li><a href="notice_list.html">NOTICE</a></li>
+							<li><a href="Notice">NOTICE</a></li>
 							<li><a href="">NEWS</a></li>
 							<li><a href="">Q AND A</a></li>
 							<li><a href="">FREE BOARD</a></li>

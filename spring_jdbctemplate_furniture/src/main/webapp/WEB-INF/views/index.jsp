@@ -192,7 +192,7 @@
 				<li><a href="">kKtchen</a></li>
 				<li><a href="">Chiffonier</a></li>
 				<li><a href="">Chair</a></li>
-				<li><a href="notice/notice_list.html">Notice & News</a></li>
+				<li><a href="Notice">Notice & News</a></li>
 			</ul>
 		</div>
 		

@@ -4,8 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class CommonUtil {
+	
+	//세션ID
+	public static String getSessionId(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("sessionId");
+		return id;
+	}
 	
 	//news 첨부 경로
 	public static String getFile_dir_news(){
@@ -14,7 +22,7 @@ public class CommonUtil {
 	}
 	//공지사항 첨부 경로
 	public static String getFile_dir_notice(){
-		String noticeDir ="E:/track_11/work_project/web_servlet_bike/WebContent/attach/notice/";		
+		String noticeDir ="C:/Users/Choi/Desktop/it/spring workproject/spring_project/spring_jdbctemplate_furniture/src/main/webapp/WEB-INF/views/attach/notice/";		
 		return noticeDir;
 	}
 	//product

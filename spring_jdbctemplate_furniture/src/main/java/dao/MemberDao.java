@@ -4,6 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +16,50 @@ import dto.MemberDto;
 public class MemberDao {
 	
 	JdbcTemplate temp = CommonJDBCTemplate.getTemplate();
-
+	//회원탈퇴
+	public int memberExit(String id, String exitDate) {
+		String query ="update furni_최선우_member\r\n" + 
+				"set exit_date = to_date('"+exitDate+"','yyyy-MM-dd hh24:mi:ss')\r\n" + 
+				"where id = '"+id+"'";
+		return temp.update(query);
+	}
+	
+	//비밀번호 변경 저장
+	public int passwordUpdate(String id, String newPw) {
+		String query = "update furni_최선우_member\r\n" + 
+				"set password = '"+newPw+"'\r\n" + 
+				"where id = '"+id+"'";
+		return temp.update(query);
+	}
+	
+	//비밀번호 변경시 현재 비밀번호 확인
+	
+	public int nowPasswordConfirm(String id, String nowPw) {
+		String query = "select count(*) as count\r\n" + 
+				"from furni_최선우_member\r\n" + 
+				"where id ='"+id+"'\r\n" + 
+				"and password ='"+nowPw+"'";
+		int count = temp.queryForObject(query, Integer.class);
+		return count;
+	}
+	
+	// 회원정보수정
+		public int memberUpdate(MemberDto dto) {
+			String query="update furni_최선우_member\r\n" + 
+					"set name='"+dto.getName()+"',\r\n" + 
+					"    area='"+dto.getArea()+"',\r\n" + 
+					"    address='"+dto.getAddress()+"',\r\n" + 
+					"    mobile_1 ='"+dto.getMobile_1()+"',\r\n" + 
+					"    mobile_2 ='"+dto.getMobile_2()+"',\r\n" + 
+					"    mobile_3 ='"+dto.getMobile_3()+"',\r\n" + 
+					"    gender ='"+dto.getGender()+"',\r\n" + 
+					"    hobby_travel='"+dto.getHobby_travel()+"', \r\n" + 
+					"    hobby_reading='"+dto.getHobby_reading()+"', \r\n" + 
+					"    hobby_sports='"+dto.getHobby_sports()+"',\r\n" + 
+					"    update_date=to_date('"+dto.getUpdate_date()+"','yyyy-MM-dd hh24:mi:ss')"+
+					"where id ='"+dto.getId()+"'";
+			return temp.update(query);
+		}
 	// 로그인 시간 업데이트
 	public int setLoginTime(String id, String todayTime) {
 		String query ="update furni_최선우_member\r\n" + 
@@ -417,6 +462,10 @@ public class MemberDao {
 		return result;
 	}
 */
+
+	
+	
+
 }
 
 

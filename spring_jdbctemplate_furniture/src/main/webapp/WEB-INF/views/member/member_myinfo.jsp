@@ -2,15 +2,37 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common_header.jsp"%>	
 <script type="text/javascript">
-
-</script>	
+	function goUpdateForm(){
+		mem.t_gubun.value ="updateForm";
+		mem.method="post";
+		mem.action="Member";
+		mem.submit();
+	}
+	function goPasswordForm(){
+		mem.t_gubun.value ="passwordUpdateForm";
+		mem.method="post";
+		mem.action="Member";
+		mem.submit();		
+	}
+	function goExit(){
+		if(confirm("정말 탈퇴하겠습니까?")){
+			mem.t_gubun.value ="memberExit";
+			mem.method="post";
+			mem.action="Member";
+			mem.submit();				
+		}
+	}
+</script>
+<form name="mem">
+	<input type="hidden" name="t_gubun">
+</form>	
 		<div id="b_left">
 			<P>MEMBER</P>
 			<ul>
 				<li><a href="javascript:goPage('login')">LOGIN</a></li>
 				<li><a href="">ID / PASSWORD</a></li>
-				<li><a href="javascript:goPage('join')"> CONTACK</a></li>
-				<li><a ><span class="fnt"><i class="fas fa-apple-alt"></i></span>MYINFO</a></li>
+				<li><a href="javascript:goPage('join')">CONTACK</a></li>
+				<li><a ><span class="fnt"><i class="fas fa-apple-alt"></i></span> MYINFOMATION</a></li>
 			</ul>
 		</div>
 		
@@ -18,8 +40,7 @@
 			<p class="n_title">
 				MY INFORMATION
 			</p>
-			<form name="mem">
-			<input type="hidden" name="t_gubun">
+
 			<table class="boardForm">
 			  <colgroup>
 				<col width="200" />
@@ -90,11 +111,11 @@
 				</tr>				
 			  </tbody>
 			</table>
-			</form>
+			
 			<div class="buttonGroup_center">
-				<a href="javascript:()" class="butt">정보수정</a>
-				<a href="javascript:()" class="butt">비밀번호변경</a>
-				<a href="javascript:()" class="butt">회원탈퇴</a>
+				<a href="javascript:goUpdateForm()" class="butt">정보수정</a>
+				<a href="javascript:goPasswordForm()" class="butt">비밀번호변경</a>
+				<a href="javascript:goExit()" class="butt">회원탈퇴</a>
 			</div>	
 		</div>	
 

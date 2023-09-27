@@ -337,7 +337,7 @@
 		clear:both;
 	}	
 	
-/*	È¸¿ø°¡ÀÔ */
+/*	È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.checkB{
 		font-size:11px;
 		height:20px;
@@ -346,7 +346,7 @@
 	.middleCheck{
 		vertical-align:middle;	
 	}	
-/*	·Î±×ÀÎ */	
+/*	ï¿½Î±ï¿½ï¿½ï¿½ */	
 .member_boxL {
     position: relative;
     padding: 40px;
@@ -366,6 +366,12 @@
 .login_form label {
     display: inline-block;
     width: 85px;
+    color: #333;
+    font-family: 'NGothicB';
+}
+.password_form label {
+    display: inline-block;
+    width: 120px;
     color: #333;
     font-family: 'NGothicB';
 }
@@ -394,8 +400,9 @@
 }	
 	
 	
-	
-	
+.password_form .btn_login {	
+	height: 127px;
+	line-height: 127px;
 	
 	
 	

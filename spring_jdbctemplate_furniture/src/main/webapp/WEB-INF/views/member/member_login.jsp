@@ -18,7 +18,7 @@
 				<li><a ><span class="fnt"><i class="fas fa-apple-alt"></i></span>LOGIN</a></li>
 				<li><a href="">ID / PASSWORD</a></li>
 				<li><a href="javascript:goPage('join')"> CONTACK</a></li>
-				<li><a href="javascript:goPage('myinfo')"> MYINFO</a></li>
+				<li><a href="javascript:goPage('myinfo')">MYINFORMATION</a></li>
 			</ul>
 		</div>
 		

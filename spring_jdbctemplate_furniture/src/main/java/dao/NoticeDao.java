@@ -17,7 +17,7 @@ public class NoticeDao {
 	//삭제
 	public int noticeDelete(String no){
 		int result  = 0;
-		String query="delete from home_홍길동_notice\r\n" + 
+		String query="delete from home_최선우_notice\r\n" + 
 					 " where no ='"+no+"'";
 		try {
 			con = DBConnection.getConnection();
@@ -35,7 +35,7 @@ public class NoticeDao {
 	//수정저장
 	public int noticeUpdate(NoticeDto dto){
 		int result =0;
-		String query="update home_홍길동_notice\r\n" + 
+		String query="update home_최선우_notice\r\n" + 
 				"set title='"+dto.getTitle()+"',\r\n" + 
 				"    content='"+dto.getContent()+"', \r\n" +
 				"    attach='"+dto.getAttach()+"'"+
@@ -60,9 +60,9 @@ public class NoticeDao {
 				"from\r\n" + 
 				"(\r\n" + 
 				"select min(no) as no\r\n" + 
-				"from home_홍길동_notice\r\n" + 
+				"from home_최선우_notice\r\n" + 
 				"where no > '"+no+"'\r\n" + 
-				") a, home_홍길동_notice b\r\n" + 
+				") a, home_최선우_notice b\r\n" + 
 				"where a.no = b.no";
 		try {
 			con = DBConnection.getConnection();
@@ -88,8 +88,8 @@ public class NoticeDao {
 		String query="select a.no, b.title\r\n" + 
 				" from \r\n" + 
 				" (select max(no) as no\r\n" + 
-				" from home_홍길동_notice\r\n" + 
-				" where no < '"+no+"') a, home_홍길동_notice b\r\n" + 
+				" from home_최선우_notice\r\n" + 
+				" where no < '"+no+"') a, home_최선우_notice b\r\n" + 
 				" where a.no = b.no";
 		try {
 			con = DBConnection.getConnection();
@@ -111,7 +111,7 @@ public class NoticeDao {
 	
 	//조회수증가
 	public void setHitCount(String no){
-		String query="update home_홍길동_notice\r\n" + 
+		String query="update home_최선우_notice\r\n" + 
 				" set hit = hit + 1\r\n" + 
 				" where no ='"+no+"'";
 		try {
@@ -134,7 +134,7 @@ public class NoticeDao {
 		NoticeDto dto =null;
 		String query  ="select n.no, n.title, n.content, n.attach,  m.name, \r\n" + 
 				"        to_char(n.reg_date,'yyyy-MM-dd hh24:mi:ss') as reg_date , n.hit\r\n" + 
-				"from home_홍길동_notice n, home_홍길동_member m\r\n" + 
+				"from home_최선우_notice n, home_최선우_member m\r\n" + 
 				"where n.reg_id = m.id\r\n" + 
 				"and n.no ='"+no+"'";
 		
@@ -165,7 +165,7 @@ public class NoticeDao {
 	public int getTotalCount(String select,String search){
 		int count = 0;
 		String query ="select count(*) as count \r\n" + 
-				"from home_홍길동_notice n \r\n" + 
+				"from home_최선우_notice n \r\n" + 
 				"where "+select+" like '%"+search+"%'";
 		try {
 			con = DBConnection.getConnection();
@@ -194,7 +194,7 @@ public class NoticeDao {
 				"    ("+
 				"    select n.no, n.title, n.attach ,m.name, \r\n" + 
 				"            to_char(n.reg_date,'yyyy-MM-dd') as reg_date , n.hit\r\n" + 
-				"    from home_홍길동_notice n, home_홍길동_member m\r\n" + 
+				"    from home_최선우_notice n, home_최선우_member m\r\n" + 
 				"    where n.reg_id = m.id\r\n" + 
 				"    and "+select+" like '%"+search+"%'\r\n" + 
 				"    order by n.no desc"+
@@ -232,7 +232,7 @@ public class NoticeDao {
 		ArrayList<NoticeDto> dtos =	new ArrayList<>();
 		String query ="select n.no, n.title, n.attach, m.name, \r\n" + 
 				"        to_char(n.reg_date,'yyyy-MM-dd') as reg_date, n.hit\r\n" + 
-				" from home_홍길동_notice n, home_홍길동_member m\r\n" + 
+				" from home_최선우_notice n, home_최선우_member m\r\n" + 
 				" where n.reg_id = m.id\r\n" + 
 				" and "+select+" like '%"+search+"%' "+
 				" order by n.no desc";
@@ -263,12 +263,12 @@ public class NoticeDao {
 	public int noticeSave(NoticeDto dto){
 		int result = 0;
 		/*
-		String query="insert into home_홍길동_notice\r\n" + 
+		String query="insert into home_최선우_notice\r\n" + 
 				"(no,title,content,attach,reg_id,reg_date) "+
 				"values\r\n" + 
 				"('"+dto.getNo()+"','"+dto.getTitle()+"','"+dto.getContent()+"','"+dto.getAttach()+"','"+dto.getReg_id()+"','"+dto.getReg_date()+"')";
 		*/
-		String query="insert into home_홍길동_notice\r\n" + 
+		String query="insert into home_최선우_notice\r\n" + 
 				"(no,title,content,attach,reg_id,reg_date)\r\n" + 
 				"values('"+dto.getNo()+"','"+dto.getTitle()+"','"+dto.getContent()+"','"+dto.getAttach()+"','"+dto.getReg_id()+"',\r\n" + 
 				"to_date('"+dto.getReg_date()+"','yyyy-MM-dd hh24:mi:ss'))";
@@ -291,7 +291,7 @@ public class NoticeDao {
 	public String getMaxNo() { // N001 N002 N003
 		String no="";
 		String query="select nvl(max(no),'N000') as no\r\n" + 
-				     "from home_홍길동_notice";
+				     "from home_최선우_notice";
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);

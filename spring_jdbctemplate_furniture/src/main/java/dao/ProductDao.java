@@ -20,7 +20,7 @@ public class ProductDao {
 	public String getMaxNo(){
 		String newNo    ="";
 		String query ="select nvl(max(no),'P000')\r\n"+ 
-				      " from bike_홍길동_product";
+				      " from bike_최선우_product";
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);
@@ -46,7 +46,7 @@ public class ProductDao {
 	// 제품 등록
 	public int productSave(ProductDto dto) {
 		int result = 0;
-		String query ="insert into bike_홍길동_product\r\n" + 
+		String query ="insert into bike_최선우_product\r\n" + 
 				"(no, product_name, content, attach, \r\n" + 
 				"	p_size, price, sort, reg_id, reg_date)\r\n" + 
 				"values\r\n" + 
@@ -76,8 +76,8 @@ public class ProductDao {
 						"select a.no, a.attach, a.product_name, b.name,\r\n" + 
 						"       to_char(a.reg_date,'yyyy-MM-dd') as reg_date,\r\n" + 
 						"       a.hit\r\n" + 
-						"from bike_홍길동_product a,\r\n" + 
-						"     bike_홍길동_member b\r\n" + 
+						"from bike_최선우_product a,\r\n" + 
+						"     bike_최선우_member b\r\n" + 
 						" where a.reg_id = b.id\r\n" + 
 						" and "+select+" like '%"+search+"%' "+
 						" order by to_number(a.sort) desc, a.no desc"+
@@ -116,7 +116,7 @@ public class ProductDao {
 						"from\r\n" + 
 						"(" +
 						"select no, attach, product_name , to_char(price,'999,999') as price " + 
-						"from bike_홍길동_product \r\n" + 
+						"from bike_최선우_product \r\n" + 
 						" order by to_number(sort) desc, no desc"+
 						") tbl) \r\n" + 
 						"where rnum >=1 and rnum <=4" ;
@@ -148,8 +148,8 @@ public class ProductDao {
 	public int getTotalCount(String select, String search) {
 		int count =0;
 		String query ="select count(*) total_count " + 
-				"from bike_홍길동_product a,\r\n" + 
-				"     bike_홍길동_member b\r\n" + 
+				"from bike_최선우_product a,\r\n" + 
+				"     bike_최선우_member b\r\n" + 
 				" where a.reg_id = b.id\r\n" + 
 				" and "+select+" like '%"+search+"%' ";
 		try {
@@ -174,8 +174,8 @@ public class ProductDao {
 		String query ="select a.product_name, a.content, a.attach,\r\n" + 
 				"        a.p_size, a.price, a.sort, a.hit, \r\n" + 
 				"        b.name, to_char(a.reg_date,'yyyy-MM-dd') reg_date\r\n" + 
-				"from bike_홍길동_product a,\r\n" + 
-				"     bike_홍길동_member b\r\n" + 
+				"from bike_최선우_product a,\r\n" + 
+				"     bike_최선우_member b\r\n" + 
 				"where a.reg_id = b.id\r\n" + 
 				"and a.no ='"+no+"'";
 		try {
@@ -210,7 +210,7 @@ public class ProductDao {
 	
 	// 조회수 증가
 	public void setHit(String no) {
-		String query =" update bike_홍길동_product\r\n" + 
+		String query =" update bike_최선우_product\r\n" + 
 						" set hit = hit + 1\r\n" + 
 						" where no ='"+no+"'  ";
 		try {
@@ -231,7 +231,7 @@ public class ProductDao {
 	// 수정 저장
 	public int productUpdate(ProductDto dto) {
 		int result = 0;
-		String query ="update bike_홍길동_product\r\n" + 
+		String query ="update bike_최선우_product\r\n" + 
 				"set product_name ='"+dto.getProduct_name()+"',\r\n" + 
 				"    content ='"+dto.getContent()+"',\r\n" + 
 				"    attach='"+dto.getAttach()+"',\r\n" + 
@@ -258,7 +258,7 @@ public class ProductDao {
 	// 삭제
 	public int productDelete(String no) {
 		int result = 0;
-		String query =" delete from bike_홍길동_product "+
+		String query =" delete from bike_최선우_product "+
 					  " where no ='"+no+"'";
 		try {
 			con = DBConnection.getConnection();
@@ -282,7 +282,7 @@ public class ProductDao {
 						"(" +
 						"select no, attach, product_name,\r\n" + 
 						"       to_char(price,'999,999') price \r\n" + 
-						"from bike_홍길동_product \r\n" + 
+						"from bike_최선우_product \r\n" + 
 						" order by to_number(sort) desc, no desc"+
 						") tbl) \r\n" + 
 						"where rnum >=1 and rnum <=6" ;
